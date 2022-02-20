@@ -33,7 +33,19 @@ public class BookRepositoryAdapter implements BookRepository{
                 .orElse(Book.builder().build());
     }
 
+    @Override
+    public Book save(Book newBook) {
+        return transformBook(bookDataRepository.save(transformBook(newBook)));
+    }
+
+
     private Book transformBook(BookData b) {
         return Book.builder().isbn(b.getIsbn()).name(b.getName()).build();
+    }
+    private BookData transformBook(Book b) {
+        BookData bookData = new BookData();
+        bookData.setIsbn(b.getIsbn());
+        bookData.setName(b.getName());
+        return bookData;
     }
 }

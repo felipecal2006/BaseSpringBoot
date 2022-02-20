@@ -7,4 +7,5 @@ import java.util.List;
 public interface BookRepository {
     List<Book> findAll();
     Book findById(Integer isbn);
+    Book save(Book newBook);
 }

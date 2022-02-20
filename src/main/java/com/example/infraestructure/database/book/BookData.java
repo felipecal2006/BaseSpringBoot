@@ -1,6 +1,8 @@
 package com.example.infraestructure.database.book;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
