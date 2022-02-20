@@ -20,18 +20,18 @@ public class BookCreatedEvent {
         this.rabbitTemplate=template;
     }
     @Bean
-    public Queue CreatedBook() {
+    public Queue createdBook() {
         return new Queue(BOOK_CREATED, NON_DURABLE);
     }
     public void sendMessage(Book book)  {
         ObjectMapper objectMapper= new ObjectMapper();
-        String bookJson = null;
         try {
-            bookJson = objectMapper.writeValueAsString(book);
+            String  bookJson = objectMapper.writeValueAsString(book);
+            rabbitTemplate.convertAndSend(BOOK_CREATED, bookJson );
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        rabbitTemplate.convertAndSend("bookCreated", bookJson );
+
     }
 
 }
