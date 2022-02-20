@@ -1,18 +1,11 @@
 package com.example.domain.model.book;
 
+import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
 @Data
-@Table(name="book")
-@NoArgsConstructor
+@Builder(toBuilder = true)
 public class Book {
-    @Id
-    private String isbn;
+    private Integer isbn;
     private String name;
 }

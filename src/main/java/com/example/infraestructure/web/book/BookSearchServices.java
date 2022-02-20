@@ -1,7 +1,7 @@
-package com.example.infraestructure.web;
+package com.example.infraestructure.web.book;
 
 import com.example.domain.model.book.Book;
-import com.example.domain.usecase.QueryBookUseCase;
+import com.example.domain.usecase.book.QueryBookUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,12 +19,8 @@ public class BookSearchServices {
         return queryBookUseCase.findAll();
     }
     @GetMapping("/book/isbn/{isbn}")
-    public Book findByIsbn(@PathVariable("isbn") String isbn){
+    public Book findByIsbn(@PathVariable("isbn") Integer isbn){
         return queryBookUseCase.findById(isbn);
-    }
-    @GetMapping("/hola")
-    public String holaMundo(){
-        return "Hola Mundo";
     }
 
 }
