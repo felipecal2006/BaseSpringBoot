@@ -16,13 +16,14 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
-public class CreateBookUseCaseTest {
+class CreateBookUseCaseTest {
     @Mock
     BookRepositoryAdapter bookRepositoryAdapter;
     @Mock
     BookCreatedEvent bookCreateEvent;
     @InjectMocks
     CreateBookUseCase createBookUseCase;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -34,7 +35,7 @@ public class CreateBookUseCaseTest {
         Book book = Book.builder().isbn(1234).name("prueba1").build();
         when(bookRepositoryAdapter.save(any())).thenReturn(book);
         doNothing().when(bookCreateEvent).sendMessage(any());
-        Book result = createBookUseCase.saveBook(1234,"prueba1");
+        Book result = createBookUseCase.saveBook(1234, "prueba1");
         Assertions.assertEquals(book, result);
     }
 }

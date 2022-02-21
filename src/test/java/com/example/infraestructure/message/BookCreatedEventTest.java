@@ -13,7 +13,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 
-public class BookCreatedEventTest {
+class BookCreatedEventTest {
     private static final String BOOK_CREATED = "bookCreated";
 
     @Mock
@@ -30,9 +30,9 @@ public class BookCreatedEventTest {
     @DisplayName("Emit event save book")
     void emitEnvetSaveBook() {
         Book book = Book.builder().isbn(1234).name("prueba1").build();
-        String jsonBook="{\"isbn\":1234,\"name\":\"prueba1\"}";
-        doNothing().when(rabbitTemplate).convertAndSend(BOOK_CREATED,jsonBook);
+        String jsonBook = "{\"isbn\":1234,\"name\":\"prueba1\"}";
+        doNothing().when(rabbitTemplate).convertAndSend(BOOK_CREATED, jsonBook);
         bookCreatedEvent.sendMessage(book);
-        verify(rabbitTemplate).convertAndSend(BOOK_CREATED ,jsonBook);
+        verify(rabbitTemplate).convertAndSend(BOOK_CREATED, jsonBook);
     }
 }

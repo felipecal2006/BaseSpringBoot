@@ -19,11 +19,12 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class QueryBookUseCaseTest {
+class QueryBookUseCaseTest {
     @Mock
     BookRepositoryAdapter bookRepositoryAdapter;
     @InjectMocks
     QueryBookUseCase queryBookUseCase;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
