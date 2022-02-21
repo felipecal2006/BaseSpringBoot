@@ -9,21 +9,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class BookRepositoryAdapter implements BookRepository{
+public class BookRepositoryAdapter implements BookRepository {
 
     private final BookDataRepository bookDataRepository;
 
     @Autowired
-    public BookRepositoryAdapter(BookDataRepository bookDataRepository){
+    public BookRepositoryAdapter(BookDataRepository bookDataRepository) {
         this.bookDataRepository = bookDataRepository;
     }
 
     @Override
     public List<Book> findAll() {
-        return bookDataRepository.findAll().stream()
-                .map(this::transformBook)
-                .collect(Collectors.toList());
-
+        return bookDataRepository.findAll().stream().map(this::transformBook).collect(Collectors.toList());
     }
 
     @Override
@@ -38,10 +35,10 @@ public class BookRepositoryAdapter implements BookRepository{
         return transformBook(bookDataRepository.save(transformBook(newBook)));
     }
 
-
     private Book transformBook(BookData b) {
         return Book.builder().isbn(b.getIsbn()).name(b.getName()).build();
     }
+
     private BookData transformBook(Book b) {
         BookData bookData = new BookData();
         bookData.setIsbn(b.getIsbn());

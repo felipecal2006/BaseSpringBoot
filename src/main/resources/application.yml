@@ -6,6 +6,11 @@ spring:
     username: user
     password: user
     driver-class-name: org.postgresql.Driver
+  rabbitmq:
+    host: localhost
+    password: user
+    username: user
+    virtual_host: local
 
 
 
