@@ -31,7 +31,5 @@ public class BookCreatedEvent {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
     }
-
 }

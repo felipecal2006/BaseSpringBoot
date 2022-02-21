@@ -32,8 +32,8 @@ public class BookCreateServicesTest {
     }
 
     @Test
-    @DisplayName("return all books")
-    void returnAllBooks() throws Exception {
+    @DisplayName("Save  book")
+    void SaveBook() throws Exception {
         Book book = Book.builder().isbn(1234).name("prueba1").build();
         when(createBookUseCase.saveBook(any(), any())).thenReturn(book);
         String jsonBook = "{\"isbn\":1234,\"name\":\"prueba1\"}";
